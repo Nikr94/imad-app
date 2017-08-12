@@ -17,14 +17,19 @@ var articleone ={
         </p>`
     
 };
-var htmltemplate=
-   <!DOCTYPE html>
-<html>
-    <head>
+function createTemplate(data){
+    var title= data.title;
+    var heading=data.heading;
+    var date=data.date;
+    var content=data.content;
+    
+var htmltemplate= `
+   <html>
+       <head>
         <title>${title}</title>
         <meta name="viewport" content="width-device-width, initial-scale-1"/>
        <link href="/ui/style.css" rel="stylesheet">
-    </head>
+       </head>
     <body>
         <div class="container">
         <div>
@@ -35,8 +40,9 @@ var htmltemplate=
         ${content}
         </div>
     </body>
-</html>
-    
+</html>`;
+return htmltemplate;
+}
 
 
 
@@ -53,7 +59,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article-one', function (req, res){
-    res.sendFile(path.join(__dirname, 'article-one.html'));
+    res.sendFile(createTemplate(articleone));
 });
 
 app.get('/article-two', function (req, res){
