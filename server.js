@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleone ={
+var articles={
+ 'article-one': {
     title:'Article one template',
     heading:'Article one',
     date:'sep 05,2016',
@@ -16,6 +17,23 @@ var articleone ={
         <p>server side js.server side js.server side js.server side js.server side js.server side js.server side js.server side js.server side js.server side js.
         </p>`
     
+                 },
+ 'article-two': {
+      title:'Article two template',
+    heading:'Article two',
+    date:'sep 10,2016',
+    content:` <p>
+                In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.</p>
+        
+        `
+ },
+ 'article-three': {
+      title:'Article three template',
+    heading:'Article three',
+    date:'sep 15,2016',
+    content:` <p>
+                In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.In this we are going to learn about server side js.</p>`
+ }
 };
 function createTemplate(data){
     var title= data.title;
@@ -58,8 +76,8 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article-one', function (req, res){
-    res.send(createTemplate(articleone));
+app.get('/:articleName', function (req, res){
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res){
