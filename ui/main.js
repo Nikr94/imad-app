@@ -72,7 +72,7 @@ ul.innerHTML =list;
     
 };
 
-request.open('GET', "http://nrg051194.imad.hasura-app.io/submit-name?name=",true);
+request.open('GET', "http://nrg051194.imad.hasura-app.io/submit-name?name=" + name,true);
 request.send(null);
 
 
