@@ -63,7 +63,7 @@ var htmltemplate= `
             <a href="/">Home</a>
         </div>
         <h1>${heading}</h1>
-        <div>${date}</div>
+        <div>${date.toDateString()}</div>
         ${content}
         </div>
     </body>
